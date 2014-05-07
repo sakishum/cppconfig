@@ -1,0 +1,132 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CConfig	operate_config.cpp	/^CConfig::CConfig(void) : m_Delimiter(std::string(1, '=')), m_Comment(std::string(1, '#')) {$/;"	f	class:operatorconfig::CConfig
+CConfig	operate_config.h	/^	CConfig(const CConfig&);$/;"	p	class:operatorconfig::CConfig	access:private
+CConfig	operate_config.h	/^	CConfig(void);$/;"	p	class:operatorconfig::CConfig	access:private
+CConfig	operate_config.h	/^class CConfig {$/;"	c	namespace:operatorconfig
+COMMENT_CHAR	operate_config.h	/^#define COMMENT_CHAR /;"	d
+ConfigHandle	operate_config.h	/^#define ConfigHandle /;"	d
+File_not_found	main.cpp	/^namespace operateconfig { struct CConfig::File_not_found; }$/;"	m	class:operateconfig::CConfig	typeref:struct:operateconfig::CConfig::	file:
+File_not_found	operate_config.h	/^		File_not_found(const std::string &filename_ = std::string()) : filename(filename_) { }$/;"	f	struct:operatorconfig::CConfig::File_not_found	access:public
+File_not_found	operate_config.h	/^	typedef struct File_not_found {$/;"	s	class:operatorconfig::CConfig	access:public
+File_not_found	operate_config.h	/^	}File_not_found;$/;"	t	class:operatorconfig::CConfig	typeref:struct:operatorconfig::CConfig::File_not_found	access:public
+GetInstance	operate_config.cpp	/^CConfig& CConfig::GetInstance(void) {$/;"	f	class:operatorconfig::CConfig
+GetInstance	operate_config.h	/^	static CConfig &GetInstance(void); $/;"	p	class:operatorconfig::CConfig	access:public
+Key_not_found	operate_config.h	/^		Key_not_found(const std::string &key_ = std::string()) : key(key_) { }$/;"	f	struct:operatorconfig::CConfig::Key_not_found	access:public
+Key_not_found	operate_config.h	/^	typedef struct Key_not_found {$/;"	s	class:operatorconfig::CConfig	access:public
+Key_not_found	operate_config.h	/^	}Key_not_found;$/;"	t	class:operatorconfig::CConfig	typeref:struct:operatorconfig::CConfig::Key_not_found	access:public
+OPERATOR_CONFIG_H__	operate_config.h	/^#define OPERATOR_CONFIG_H__$/;"	d
+T_as_string	operate_config.h	/^	template<typename T> static std::string T_as_string(const T &t);$/;"	p	class:operatorconfig::CConfig	access:protected
+T_as_string	operate_config.h	/^std::string CConfig::T_as_string(const T &t) {$/;"	f	class:operatorconfig::CConfig
+Trim	operate_config.cpp	/^void CConfig::Trim(std::string &inout_s) {$/;"	f	class:operatorconfig::CConfig
+Trim	operate_config.h	/^	static void Trim(std::string &inout_s);$/;"	p	class:operatorconfig::CConfig	access:protected
+add	operate_config.h	/^	template<class T> void add(const std::string &in_key, const T& in_value);$/;"	p	class:operatorconfig::CConfig	access:public
+add	operate_config.h	/^void CConfig::add(const std::string &in_key, const T &value) {$/;"	f	class:operatorconfig::CConfig
+fileExist	operate_config.cpp	/^bool CConfig::fileExist(std::string &filename) {$/;"	f	class:operatorconfig::CConfig
+fileExist	operate_config.h	/^	bool fileExist(std::string &filename);$/;"	p	class:operatorconfig::CConfig	access:public
+filename	operate_config.h	/^		std::string filename;$/;"	m	struct:operatorconfig::CConfig::File_not_found	access:public
+getComment	operate_config.h	/^	std::string getComment(void) const { return m_Comment; }$/;"	f	class:operatorconfig::CConfig	access:public
+getDelimiter	operate_config.h	/^	std::string getDelimiter(void) const { return m_Delimiter; }$/;"	f	class:operatorconfig::CConfig	access:public
+init	operate_config.cpp	/^void CConfig::init(std::string filename, std::string delimiter, std::string comment) {$/;"	f	class:operatorconfig::CConfig
+init	operate_config.h	/^	void init(std::string filename, std::string delimiter = "=", std::string comment = "#");$/;"	p	class:operatorconfig::CConfig	access:public
+key	operate_config.h	/^		std::string key;$/;"	m	struct:operatorconfig::CConfig::Key_not_found	access:public
+keyExists	operate_config.cpp	/^bool CConfig::keyExists(const std::string &key) const {$/;"	f	class:operatorconfig::CConfig
+keyExists	operate_config.h	/^	bool keyExists(const std::string &in_key) const;$/;"	p	class:operatorconfig::CConfig	access:public
+m_Comment	operate_config.h	/^	std::string m_Comment;		\/\/<! separator between value and comments$/;"	m	class:operatorconfig::CConfig	access:protected
+m_Contents	operate_config.h	/^	std::map<std::string, std::string> m_Contents;	\/\/!<extracted keys and values $/;"	m	class:operatorconfig::CConfig	access:protected
+m_Delimiter	operate_config.h	/^	std::string m_Delimiter;	\/\/<! separator between key and value $/;"	m	class:operatorconfig::CConfig	access:protected
+main	main.cpp	/^int main(void) {$/;"	f
+mapci	operate_config.h	/^	typedef std::map<std::string,std::string>::const_iterator mapci;$/;"	t	class:operatorconfig::CConfig	access:protected
+mapi	operate_config.h	/^	typedef std::map<std::string,std::string>::iterator mapi;$/;"	t	class:operatorconfig::CConfig	access:protected
+operateconfig	main.cpp	/^namespace operateconfig { class CConfig; }$/;"	n	file:
+operateconfig	main.cpp	/^namespace operateconfig { struct CConfig::File_not_found; }$/;"	n	file:
+operateconfig::CConfig::File_not_found	main.cpp	/^namespace operateconfig { struct CConfig::File_not_found; }$/;"	m	class:operateconfig::CConfig	typeref:struct:operateconfig::CConfig::	file:
+operator <<	operate_config.cpp	/^std::ostream& operator<<(std::ostream &os, const CConfig  &cf) {$/;"	f	namespace:operatorconfig
+operator <<	operate_config.h	/^	friend std::ostream& operator<<(std::ostream& os, const CConfig& cf);$/;"	p	class:operatorconfig::CConfig	access:friend
+operator =	operate_config.h	/^	void operator=(const CConfig&);$/;"	p	class:operatorconfig::CConfig	access:private
+operator >>	operate_config.cpp	/^std::istream& operator>>(std::istream &is, CConfig& cf) {$/;"	f	namespace:operatorconfig
+operator >>	operate_config.h	/^	friend std::istream& operator>>(std::istream& is, CConfig& cf);$/;"	p	class:operatorconfig::CConfig	access:friend
+operatorconfig	operate_config.cpp	/^namespace operatorconfig {$/;"	n	file:
+operatorconfig	operate_config.h	/^namespace operatorconfig {$/;"	n
+operatorconfig::CConfig	operate_config.h	/^class CConfig {$/;"	c	namespace:operatorconfig
+operatorconfig::CConfig::CConfig	operate_config.cpp	/^CConfig::CConfig(void) : m_Delimiter(std::string(1, '=')), m_Comment(std::string(1, '#')) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::CConfig	operate_config.h	/^	CConfig(const CConfig&);$/;"	p	class:operatorconfig::CConfig	access:private
+operatorconfig::CConfig::CConfig	operate_config.h	/^	CConfig(void);$/;"	p	class:operatorconfig::CConfig	access:private
+operatorconfig::CConfig::File_not_found	operate_config.h	/^	typedef struct File_not_found {$/;"	s	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::File_not_found	operate_config.h	/^	}File_not_found;$/;"	t	class:operatorconfig::CConfig	typeref:struct:operatorconfig::CConfig::File_not_found	access:public
+operatorconfig::CConfig::File_not_found::File_not_found	operate_config.h	/^		File_not_found(const std::string &filename_ = std::string()) : filename(filename_) { }$/;"	f	struct:operatorconfig::CConfig::File_not_found	access:public
+operatorconfig::CConfig::File_not_found::filename	operate_config.h	/^		std::string filename;$/;"	m	struct:operatorconfig::CConfig::File_not_found	access:public
+operatorconfig::CConfig::GetInstance	operate_config.cpp	/^CConfig& CConfig::GetInstance(void) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::GetInstance	operate_config.h	/^	static CConfig &GetInstance(void); $/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::Key_not_found	operate_config.h	/^	typedef struct Key_not_found {$/;"	s	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::Key_not_found	operate_config.h	/^	}Key_not_found;$/;"	t	class:operatorconfig::CConfig	typeref:struct:operatorconfig::CConfig::Key_not_found	access:public
+operatorconfig::CConfig::Key_not_found::Key_not_found	operate_config.h	/^		Key_not_found(const std::string &key_ = std::string()) : key(key_) { }$/;"	f	struct:operatorconfig::CConfig::Key_not_found	access:public
+operatorconfig::CConfig::Key_not_found::key	operate_config.h	/^		std::string key;$/;"	m	struct:operatorconfig::CConfig::Key_not_found	access:public
+operatorconfig::CConfig::T_as_string	operate_config.h	/^	template<typename T> static std::string T_as_string(const T &t);$/;"	p	class:operatorconfig::CConfig	access:protected
+operatorconfig::CConfig::T_as_string	operate_config.h	/^std::string CConfig::T_as_string(const T &t) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::Trim	operate_config.cpp	/^void CConfig::Trim(std::string &inout_s) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::Trim	operate_config.h	/^	static void Trim(std::string &inout_s);$/;"	p	class:operatorconfig::CConfig	access:protected
+operatorconfig::CConfig::add	operate_config.h	/^	template<class T> void add(const std::string &in_key, const T& in_value);$/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::add	operate_config.h	/^void CConfig::add(const std::string &in_key, const T &value) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::fileExist	operate_config.cpp	/^bool CConfig::fileExist(std::string &filename) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::fileExist	operate_config.h	/^	bool fileExist(std::string &filename);$/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::getComment	operate_config.h	/^	std::string getComment(void) const { return m_Comment; }$/;"	f	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::getDelimiter	operate_config.h	/^	std::string getDelimiter(void) const { return m_Delimiter; }$/;"	f	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::init	operate_config.cpp	/^void CConfig::init(std::string filename, std::string delimiter, std::string comment) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::init	operate_config.h	/^	void init(std::string filename, std::string delimiter = "=", std::string comment = "#");$/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::keyExists	operate_config.cpp	/^bool CConfig::keyExists(const std::string &key) const {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::keyExists	operate_config.h	/^	bool keyExists(const std::string &in_key) const;$/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::m_Comment	operate_config.h	/^	std::string m_Comment;		\/\/<! separator between value and comments$/;"	m	class:operatorconfig::CConfig	access:protected
+operatorconfig::CConfig::m_Contents	operate_config.h	/^	std::map<std::string, std::string> m_Contents;	\/\/!<extracted keys and values $/;"	m	class:operatorconfig::CConfig	access:protected
+operatorconfig::CConfig::m_Delimiter	operate_config.h	/^	std::string m_Delimiter;	\/\/<! separator between key and value $/;"	m	class:operatorconfig::CConfig	access:protected
+operatorconfig::CConfig::mapci	operate_config.h	/^	typedef std::map<std::string,std::string>::const_iterator mapci;$/;"	t	class:operatorconfig::CConfig	access:protected
+operatorconfig::CConfig::mapi	operate_config.h	/^	typedef std::map<std::string,std::string>::iterator mapi;$/;"	t	class:operatorconfig::CConfig	access:protected
+operatorconfig::CConfig::operator <<	operate_config.h	/^	friend std::ostream& operator<<(std::ostream& os, const CConfig& cf);$/;"	p	class:operatorconfig::CConfig	access:friend
+operatorconfig::CConfig::operator =	operate_config.h	/^	void operator=(const CConfig&);$/;"	p	class:operatorconfig::CConfig	access:private
+operatorconfig::CConfig::operator >>	operate_config.h	/^	friend std::istream& operator>>(std::istream& is, CConfig& cf);$/;"	p	class:operatorconfig::CConfig	access:friend
+operatorconfig::CConfig::read	operate_config.h	/^	template<typename T> T read(const std::string &in_key) const;	\/\/<! Searchfor key and read value or optional default value, call as read<T> $/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::read	operate_config.h	/^	template<typename T> T read(const std::string &in_key, const T &in_value) const;$/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::read	operate_config.h	/^T CConfig::read(const std::string &key, const T &value) const {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::read	operate_config.h	/^T CConfig::read(const std::string& key) const {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::readFile	operate_config.cpp	/^void CConfig::readFile(std::string &filname, std::string delimiter, std::string comment) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::readFile	operate_config.h	/^	void readFile(std::string &filename, std::string delimiter="=", std::string comment = "#");$/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::readInto	operate_config.h	/^	template<typename T> bool readInto(T &out_var, const std::string &in_key) const;$/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::readInto	operate_config.h	/^	template<typename T> bool readInto(T &out_var, const std::string &in_key, const T &in_value) const;$/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::readInto	operate_config.h	/^bool CConfig::readInto(T &var, const std::string &key, const T &value) const {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::readInto	operate_config.h	/^bool CConfig::readInto(T &var, const std::string& key) const {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::remove	operate_config.cpp	/^void CConfig::remove(const std::string &key) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::remove	operate_config.h	/^	void remove(const std::string &in_key);$/;"	p	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::setComment	operate_config.h	/^	std::string setComment(const std::string &in_s) {$/;"	f	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::setDelimiter	operate_config.h	/^	std::string setDelimiter(const std::string &in_s) { $/;"	f	class:operatorconfig::CConfig	access:public
+operatorconfig::CConfig::string_as_T	operate_config.h	/^	template<typename T> static T string_as_T(const std::string &s);$/;"	p	class:operatorconfig::CConfig	access:protected
+operatorconfig::CConfig::string_as_T	operate_config.h	/^T CConfig::string_as_T(const std::string &s) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::string_as_T	operate_config.h	/^inline bool CConfig::string_as_T<bool>(const std::string& s) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::string_as_T	operate_config.h	/^inline std::string CConfig::string_as_T<std::string>(const std::string &s) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::~CConfig	operate_config.cpp	/^CConfig::~CConfig(void) {$/;"	f	class:operatorconfig::CConfig
+operatorconfig::CConfig::~CConfig	operate_config.h	/^	~CConfig(void);$/;"	p	class:operatorconfig::CConfig	access:private
+operatorconfig::operator <<	operate_config.cpp	/^std::ostream& operator<<(std::ostream &os, const CConfig  &cf) {$/;"	f	namespace:operatorconfig
+operatorconfig::operator >>	operate_config.cpp	/^std::istream& operator>>(std::istream &is, CConfig& cf) {$/;"	f	namespace:operatorconfig
+read	operate_config.h	/^	template<typename T> T read(const std::string &in_key) const;	\/\/<! Searchfor key and read value or optional default value, call as read<T> $/;"	p	class:operatorconfig::CConfig	access:public
+read	operate_config.h	/^	template<typename T> T read(const std::string &in_key, const T &in_value) const;$/;"	p	class:operatorconfig::CConfig	access:public
+read	operate_config.h	/^T CConfig::read(const std::string &key, const T &value) const {$/;"	f	class:operatorconfig::CConfig
+read	operate_config.h	/^T CConfig::read(const std::string& key) const {$/;"	f	class:operatorconfig::CConfig
+readFile	operate_config.cpp	/^void CConfig::readFile(std::string &filname, std::string delimiter, std::string comment) {$/;"	f	class:operatorconfig::CConfig
+readFile	operate_config.h	/^	void readFile(std::string &filename, std::string delimiter="=", std::string comment = "#");$/;"	p	class:operatorconfig::CConfig	access:public
+readInto	operate_config.h	/^	template<typename T> bool readInto(T &out_var, const std::string &in_key) const;$/;"	p	class:operatorconfig::CConfig	access:public
+readInto	operate_config.h	/^	template<typename T> bool readInto(T &out_var, const std::string &in_key, const T &in_value) const;$/;"	p	class:operatorconfig::CConfig	access:public
+readInto	operate_config.h	/^bool CConfig::readInto(T &var, const std::string &key, const T &value) const {$/;"	f	class:operatorconfig::CConfig
+readInto	operate_config.h	/^bool CConfig::readInto(T &var, const std::string& key) const {$/;"	f	class:operatorconfig::CConfig
+remove	operate_config.cpp	/^void CConfig::remove(const std::string &key) {$/;"	f	class:operatorconfig::CConfig
+remove	operate_config.h	/^	void remove(const std::string &in_key);$/;"	p	class:operatorconfig::CConfig	access:public
+setComment	operate_config.h	/^	std::string setComment(const std::string &in_s) {$/;"	f	class:operatorconfig::CConfig	access:public
+setDelimiter	operate_config.h	/^	std::string setDelimiter(const std::string &in_s) { $/;"	f	class:operatorconfig::CConfig	access:public
+string_as_T	operate_config.h	/^	template<typename T> static T string_as_T(const std::string &s);$/;"	p	class:operatorconfig::CConfig	access:protected
+string_as_T	operate_config.h	/^T CConfig::string_as_T(const std::string &s) {$/;"	f	class:operatorconfig::CConfig
+string_as_T	operate_config.h	/^inline bool CConfig::string_as_T<bool>(const std::string& s) {$/;"	f	class:operatorconfig::CConfig
+string_as_T	operate_config.h	/^inline std::string CConfig::string_as_T<std::string>(const std::string &s) {$/;"	f	class:operatorconfig::CConfig
+~CConfig	operate_config.cpp	/^CConfig::~CConfig(void) {$/;"	f	class:operatorconfig::CConfig
+~CConfig	operate_config.h	/^	~CConfig(void);$/;"	p	class:operatorconfig::CConfig	access:private

@@ -21,14 +21,9 @@ There are multiple compilation choices:
 If you just want to build Cppcheck without dependencies then you can use this command:
 
 ```shell
-g++ -o Cppconfig *.cpp
+make all
 ```
 
-If you want to use `--rule` and `--rule-file` then dependencies are needed:
-
-```shell
-g++ -o Cppconfig *.cpp
-```
 
 ### Other Compiler/IDE
 

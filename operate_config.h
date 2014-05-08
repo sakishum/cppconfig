@@ -17,6 +17,7 @@
 
 namespace operatorconfig {
 // Exception types
+// 尽量不要将一个嵌套类声明为public，把嵌套类置于名字空间中是更好的方式。
 class File_not_found {
 public:
 	std::string filename;

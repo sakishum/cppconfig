@@ -6,6 +6,7 @@
 
 namespace operateconfig { class CConfig; }
 namespace operateconfig { class File_not_found; }
+namespace operateconfig { class Key_not_found; }
 
 int main(void) {
 	std::string temp;

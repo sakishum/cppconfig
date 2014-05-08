@@ -12,12 +12,11 @@
 
 namespace operatorconfig {
 CConfig::CConfig(void) : m_Delimiter(std::string(1, '=')), m_Comment(std::string(1, '#')) {
-	// Construct a Config without a file; empty 
-	printf("Constructor\n");
+	// Construct a Config without a file;
 }
 
 CConfig::~CConfig(void) {
-	printf("Disstructor\n");
+	// Disstruct a Config
 }
 
 CConfig& CConfig::GetInstance(void) {
@@ -26,14 +25,15 @@ CConfig& CConfig::GetInstance(void) {
 }
 
 void CConfig::init(std::string filename, std::string delimiter, std::string comment) {
-	 setDelimiter(delimiter);
-	 setComment(comment);
-	 std::ifstream in(filename.c_str()); 
-	 if (!in) {
-		 printf("Couldn\'t open file\n");
-		 throw File_not_found(filename); 
-	 }
-	 in >> (*this);
+	setDelimiter(delimiter);
+	setComment(comment);
+	std::ifstream in(filename.c_str()); 
+	if (!in) {
+		printf("Couldn\'t open this file!\n");
+		throw File_not_found(filename); 
+	}
+	in >> (*this);	// save in memory by operator>>
+	in.close();		// auto release 
 }
 
 bool CConfig::keyExists(const std::string &key) const {
@@ -61,6 +61,7 @@ bool CConfig::fileExist(std::string &filename) {
 	std::ifstream in(filename.c_str());
 	if (in) {
 		exist = true;
+		//in.close();	// auto release
 	}
 	return exist;
 }
@@ -71,13 +72,13 @@ void CConfig::readFile(std::string &filname, std::string delimiter, std::string 
 	std::ifstream in(filname.c_str());
 	if (!in) throw File_not_found(filname);
 	in >> (*this);
+	in.close();			// auto release 
 }
 
 std::ostream& operator<<(std::ostream &os, const CConfig  &cf) {
 	// Save a Config to os
 	for (CConfig::mapci p = cf.m_Contents.begin(); p != cf.m_Contents.end(); ++p) {
-		os << p->first << " " << cf.m_Delimiter << " ";
-		os << p->second << std::endl;
+		os << p->first << " " << cf.m_Delimiter << " " << p->second << std::endl;
 	}
 	return os;
 }
@@ -101,10 +102,10 @@ std::istream& operator>>(std::istream &is, CConfig& cf) {
 			std::getline(is, line);
 		}
 
-		//Ignore comments
+		// Ignore comments ('#')
 		line = line.substr(0, line.find(comm));
 
-		// Parse the line if it contains a delimiter
+		// Parse the line if it contains a delimiter ('=')
 		pos delimPos = line.find(delim);
 		if (delimPos < std::string::npos) {
 			// Extract the key

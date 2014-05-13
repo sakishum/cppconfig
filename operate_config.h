@@ -41,7 +41,7 @@ public:
 	template<typename T> bool readInto(T &out_var, const std::string &in_key, const T &in_value) const;
 	bool fileExist(std::string &filename);
 	void readFile(std::string &filename, std::string delimiter="=", std::string comment = "#");
-	// Cheak whether key exists in configuration
+	// Check whether key exists in configuration
 	bool keyExists(const std::string &in_key) const;
 
 	// Modify keys and values
@@ -78,9 +78,10 @@ protected:
 private:
 	CConfig(void);
 	~CConfig(void);
+	//DISALLOW_COPY_AND_ASSIGN(CConfig);
 	CConfig(const CConfig&);
 	void operator=(const CConfig&);
-};  // class Config
+};  // class CConfig
 
 /* Static */
 template<typename T>

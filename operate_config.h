@@ -13,8 +13,6 @@
 #include <string>
 #include <map>
 
-#define ConfigHandle operatorconfig::CConfig::GetInstance()
-
 namespace operatorconfig {
 // Exception types
 // 尽量不要将一个嵌套类声明为public，把嵌套类置于名字空间中是更好的方式。
@@ -33,7 +31,9 @@ public:
 class CConfig {
 	// Method
 public:
-	static CConfig &GetInstance(void); 
+	CConfig(void);
+	CConfig(std::string filename, std::string delimiter = "=", std::string comment = "#");
+
 	void init(std::string filename, std::string delimiter = "=", std::string comment = "#");
 	template<typename T> T read(const std::string &in_key) const;	//<! Searchfor key and read value or optional default value, call as read<T> 
 	template<typename T> T read(const std::string &in_key, const T &in_value) const;
@@ -54,6 +54,7 @@ public:
 	std::string setDelimiter(const std::string &in_s) { 
 		std::string old = m_Delimiter; m_Delimiter = in_s; return old;
 	}
+
 	std::string setComment(const std::string &in_s) {
 		std::string old = m_Comment; m_Comment = in_s; return old;
 	}
@@ -74,13 +75,6 @@ protected:
 	template<typename T> static std::string T_as_string(const T &t);
 	template<typename T> static T string_as_T(const std::string &s);
 	static void Trim(std::string &inout_s);
-
-private:
-	CConfig(void);
-	~CConfig(void);
-	//DISALLOW_COPY_AND_ASSIGN(CConfig);
-	CConfig(const CConfig&);
-	void operator=(const CConfig&);
 };  // class CConfig
 
 /* Static */

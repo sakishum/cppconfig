@@ -15,13 +15,15 @@ CConfig::CConfig(void) : m_Delimiter(std::string(1, '=')), m_Comment(std::string
 	// Construct a Config without a file;
 }
 
-CConfig::~CConfig(void) {
-	// Disstruct a Config
-}
-
-CConfig& CConfig::GetInstance(void) {
-	static CConfig instance;
-	return instance;
+CConfig::CConfig(std::string filename, std::string delimiter, std::string comment) 
+: m_Delimiter(delimiter), m_Comment(comment) {
+	std::ifstream in(filename.c_str()); 
+	if (!in) {
+		printf("Couldn\'t open this file!\n");
+		throw File_not_found(filename); 
+	}
+	in >> (*this);	// save in memory by operator>>
+	in.close();		// auto release 
 }
 
 void CConfig::init(std::string filename, std::string delimiter, std::string comment) {

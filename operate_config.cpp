@@ -15,7 +15,7 @@ CConfig::CConfig(void) : m_Delimiter(std::string(1, '=')), m_Comment(std::string
 	// Construct a Config without a file;
 }
 
-CConfig::CConfig(std::string filename, std::string delimiter, std::string comment) 
+CConfig::CConfig(const std::string &filename, const std::string &delimiter, const std::string &comment) 
 : m_Delimiter(delimiter), m_Comment(comment) {
 	std::ifstream in(filename.c_str()); 
 	if (!in) {
@@ -26,7 +26,7 @@ CConfig::CConfig(std::string filename, std::string delimiter, std::string commen
 	in.close();		// auto release 
 }
 
-void CConfig::init(std::string filename, std::string delimiter, std::string comment) {
+void CConfig::init(const std::string &filename, const std::string &delimiter, const std::string &comment) {
 	setDelimiter(delimiter);
 	setComment(comment);
 	std::ifstream in(filename.c_str()); 
@@ -92,11 +92,17 @@ std::istream& operator>>(std::istream &is, CConfig& cf) {
 	const std::string &delim = cf.m_Delimiter;	// sparator
 	const std::string &comm = cf.m_Comment;		// comment
 	const pos skip = delim.length();			// length of sparator
-	std::string nextline = "";	// might need to read ahead to see where value ends
+	
+	bool terminate = false;
+	pos delimPos = 0;
+	std::string key("");
+	std::string line("");
+	std::string nlcopy("");
+	std::string nextline("");	// might need to read ahead to see where value ends
 
 	while (is || nextline.length() > 0) {
 		// Read an entrie line at a time
-		std::string line;
+		line = "";
 		if (nextline.length() > 0) {
 			line = nextline;	// we read ahead; use it now
 			nextline = "";
@@ -108,21 +114,21 @@ std::istream& operator>>(std::istream &is, CConfig& cf) {
 		line = line.substr(0, line.find(comm));
 
 		// Parse the line if it contains a delimiter ('=')
-		pos delimPos = line.find(delim);
+		delimPos = line.find(delim);
 		if (delimPos < std::string::npos) {
 			// Extract the key
-			std::string key = line.substr(0, delimPos);
+			key = line.substr(0, delimPos);
 			line.replace(0, delimPos+skip, "");
 
 			// See if value continues on the next line
 			// Stop at blank line, next line with a key, end of stream,
 			// or end of file sentry
-			bool terminate = false;
+			terminate = false;
 			while (!terminate && is) {
 				std::getline(is, nextline);
 				terminate = true;
 
-				std::string nlcopy = nextline;
+				nlcopy = nextline;
 				CConfig::Trim(nlcopy);
 				if (nlcopy == "") {
 					continue;

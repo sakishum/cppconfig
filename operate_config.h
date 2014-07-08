@@ -32,9 +32,9 @@ class CConfig {
 	// Method
 public:
 	CConfig(void);
-	CConfig(std::string filename, std::string delimiter = "=", std::string comment = "#");
+	CConfig(const std::string &filename, const std::string &delimiter = "=", const std::string &comment = "#");
 
-	void init(std::string filename, std::string delimiter = "=", std::string comment = "#");
+	void init(const std::string &filename, const std::string &delimiter = "=", const std::string &comment = "#");
 	template<typename T> T read(const std::string &in_key) const;	//<! Searchfor key and read value or optional default value, call as read<T> 
 	template<typename T> T read(const std::string &in_key, const T &in_value) const;
 	template<typename T> bool readInto(T &out_var, const std::string &in_key) const;

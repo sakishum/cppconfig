@@ -5,7 +5,7 @@
  * @version 0.0.1
  * @date 2014-05-06
  */
-#include "./operate_config.h"
+#include "operate_config.h"
 #include <fstream>
 #include <cstdlib>
 #include <cstdio>

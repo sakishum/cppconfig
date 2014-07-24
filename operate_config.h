@@ -35,12 +35,22 @@ public:
 	CConfig(const std::string &filename, const std::string &delimiter = "=", const std::string &comment = "#");
 
 	void init(const std::string &filename, const std::string &delimiter = "=", const std::string &comment = "#");
+	// 兼容TT服务器的接口
+	void loadfile(const std::string &filename, const std::string &delimiter = "=", const std::string &comment = "#") {
+		init(filename, delimiter, comment);
+	}
+
 	template<typename T> T read(const std::string &in_key) const;	//<! Searchfor key and read value or optional default value, call as read<T> 
 	template<typename T> T read(const std::string &in_key, const T &in_value) const;
+	// 兼容TT服务器的接口
+	template<typename T> T getValue(const std::string &in_key) const;	//<! Searchfor key and read value or optional default value, call as read<T> 
+	template<typename T> void getValue(const std::string &key, T &value);
+
 	template<typename T> bool readInto(T &out_var, const std::string &in_key) const;
 	template<typename T> bool readInto(T &out_var, const std::string &in_key, const T &in_value) const;
 	bool fileExist(std::string &filename);
 	void readFile(std::string &filename, std::string delimiter="=", std::string comment = "#");
+
 	// Check whether key exists in configuration
 	bool keyExists(const std::string &in_key) const;
 
@@ -139,10 +149,30 @@ T CConfig::read(const std::string &key, const T &value) const {
 	// if key is not found 
 	mapci p = m_Contents.find(key);
 	if (p == m_Contents.end()) {
-		printf("Not fount\n");
+		printf("CConfig::%s, Not found, key is '%s'.\n", __func__, key.c_str());
 		return value;
 	}
 	return string_as_T<T>( p->second);
+}
+
+template<typename T>
+T CConfig::getValue(const std::string& key) const {
+	// Read the value corresponding to key
+	mapci p = m_Contents.find(key);
+	if (p == m_Contents.end()) throw Key_not_found(key);
+	return string_as_T<T>( p->second);
+}
+
+template<typename T>
+void CConfig::getValue(const std::string &key, T &value) {
+	// Return the value corresponding to key or given default value
+	// if key is not found 
+	mapci p = m_Contents.find(key);
+	if (p == m_Contents.end()) {
+		printf("CConfig::%s, Not found, key is '%s'.\n", __func__, key.c_str());
+		return;
+	}
+	value = string_as_T<T>(p->second);
 }
 
 template<typename T>

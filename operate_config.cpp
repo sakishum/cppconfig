@@ -19,7 +19,7 @@ CConfig::CConfig(const std::string &filename, const std::string &delimiter, cons
 : m_Delimiter(delimiter), m_Comment(comment) {
 	std::ifstream in(filename.c_str()); 
 	if (!in) {
-		printf("Couldn\'t open this file!\n");
+		//printf("Couldn\'t open this file!\n");
 		throw File_not_found(filename); 
 	}
 	in >> (*this);	// save in memory by operator>>
@@ -31,7 +31,7 @@ void CConfig::init(const std::string &filename, const std::string &delimiter, co
 	setComment(comment);
 	std::ifstream in(filename.c_str()); 
 	if (!in) {
-		printf("Couldn\'t open this file!\n");
+		//printf("Couldn\'t open this file!\n");
 		throw File_not_found(filename); 
 	}
 	in >> (*this);	// save in memory by operator>>
@@ -85,16 +85,48 @@ std::ostream& operator<<(std::ostream &os, const CConfig  &cf) {
 	return os;
 }
 
+std::string& CConfig::replace_all_distinct(std::string& str, const std::string& old_value, const std::string& new_value) {  
+    for (std::string::size_type pos(0); pos != std::string::npos; pos += new_value.length()) {   
+		if ((pos = str.find(old_value, pos)) != std::string::npos) {   
+			str.replace(pos, old_value.length(), new_value);  
+        } else {   
+            break;
+        }   
+    }   
+    return   str;   
+}   
+ 
+void CConfig::ignoreComment(std::string &str, const std::string &comm) {
+	bool isFound = false;
+    std::string::size_type position = 0;  
+    while ((position = str.find_first_of(comm, position)) != std::string::npos) {
+    	//printf("****CConfig::%s, str[position - 1] = '%d' .\n", __func__, static_cast<int>(str[position - 1]));
+        if (str[position - 1] == '\\') {
+            position++;
+            isFound = true;
+            continue;
+        }   
+        break;
+    }   
+    str = str.substr(0, position);
+    if (isFound) {
+    	replace_all_distinct(str, "\\", "");
+	}
+}
+
 std::istream& operator>>(std::istream &is, CConfig& cf) {
 	// Load a Config from is
 	// Read in keys and values, kepping internal whitespace
 	typedef std::string::size_type pos;
+	//const std::string ignore = "\\";
 	const std::string &delim = cf.m_Delimiter;	// sparator
 	const std::string &comm = cf.m_Comment;		// comment
 	const pos skip = delim.length();			// length of sparator
+	printf("comm : %s\n", comm.c_str());
 	
 	bool terminate = false;
 	pos delimPos = 0;
+	//pos ignorePos = 0;
 	std::string key("");
 	std::string line("");
 	std::string nlcopy("");
@@ -110,15 +142,16 @@ std::istream& operator>>(std::istream &is, CConfig& cf) {
 			std::getline(is, line);
 		}
 
-		// Ignore comments ('#')
-		line = line.substr(0, line.find(comm));
+		// Ignore comments ('#', ignore '\#')
+		CConfig::ignoreComment(line, comm);
+		//line = line.substr(0, line.find(comm));
 
 		// Parse the line if it contains a delimiter ('=')
 		delimPos = line.find(delim);
 		if (delimPos < std::string::npos) {
 			// Extract the key
 			key = line.substr(0, delimPos);
-			line.replace(0, delimPos+skip, "");
+			line.replace(0, delimPos + skip, "");
 
 			// See if value continues on the next line
 			// Stop at blank line, next line with a key, end of stream,
@@ -134,7 +167,8 @@ std::istream& operator>>(std::istream &is, CConfig& cf) {
 					continue;
 				}
 
-				nextline = nextline.substr(0, nextline.find(comm));
+				//nextline = nextline.substr(0, nextline.find(comm));
+				CConfig::ignoreComment(nextline, comm);
 				if (nextline.find(delim) != std::string::npos) {
 					continue;
 				}

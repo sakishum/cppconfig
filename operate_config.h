@@ -85,6 +85,8 @@ protected:
 	template<typename T> static std::string T_as_string(const T &t);
 	template<typename T> static T string_as_T(const std::string &s);
 	static void Trim(std::string &inout_s);
+	static std::string& replace_all_distinct(std::string& str, const std::string& old_value,const std::string& new_value);
+	static void ignoreComment(std::string &str, const std::string &comm);
 };  // class CConfig
 
 /* Static */

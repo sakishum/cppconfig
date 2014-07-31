@@ -1,6 +1,6 @@
 ipAddress = 10.10.90.125 # 用户IP地址
 port=3001 
-username=mark 
+username=mark\#
 
 
 password=2d2df5a 

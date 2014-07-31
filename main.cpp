@@ -14,7 +14,7 @@ int main(void) {
 	std::string TITLE_3V3;
 	const char Config[] = "config.txt";
 
-	operatorconfig::CConfig configobj(Config); 
+	operatorconfig::CConfig configobj;	
 
 	// /Users/sakishum1118/MyCCpp/try_catch
 	// 读配置文件，失败返回一个 异常类对象
@@ -45,11 +45,11 @@ int main(void) {
 	}
 	TITLE_3V3 = configobj.read("3V3_TITLE", TITLE_3V3);
 
-	std::cout << "saki      :" << temp << std::endl;
-	std::cout << "port      :" << port << std::endl;
-	std::cout << "ipAddress :" << ipAddress << std::endl;
-	std::cout << "username  :" << username << std::endl;
-	std::cout << "password  :" << password << std::endl;
+	std::cout << "saki      : '" << temp << "'"<< std::endl;
+	std::cout << "port      : '" << port << "'"<< std::endl;
+	std::cout << "ipAddress : '" << ipAddress << "'" << std::endl;
+	std::cout << "username  : '" << username << "'" << std::endl;
+	std::cout << "password  : '" << password << "'" << std::endl;
     if (isCool) { 
 		printf("isCool    :Found isCool TRUE\n"); 
 	} else {

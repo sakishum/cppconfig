@@ -44,7 +44,7 @@ public:
 	template<typename T> T read(const std::string &in_key, const T &in_value) const;
 	// 兼容TT服务器的接口
 	template<typename T> T getValue(const std::string &in_key) const;	//<! Searchfor key and read value or optional default value, call as read<T> 
-	template<typename T> void getValue(const std::string &key, T &value);
+	template<typename T> void getValue(const std::string &key, T &value) const;
 
 	template<typename T> bool readInto(T &out_var, const std::string &in_key) const;
 	template<typename T> bool readInto(T &out_var, const std::string &in_key, const T &in_value) const;
@@ -86,7 +86,7 @@ protected:
 	template<typename T> static T string_as_T(const std::string &s);
 	static void Trim(std::string &inout_s);
 	static std::string& replace_all_distinct(std::string& str, const std::string& old_value,const std::string& new_value);
-	static void ignoreComment(std::string &str, const std::string &comm);
+	static void ignoreComment(std::string &str, const std::string &comm, bool isfilter);
 };  // class CConfig
 
 /* Static */
@@ -166,7 +166,7 @@ T CConfig::getValue(const std::string& key) const {
 }
 
 template<typename T>
-void CConfig::getValue(const std::string &key, T &value) {
+void CConfig::getValue(const std::string &key, T &value) const {
 	// Return the value corresponding to key or given default value
 	// if key is not found 
 	mapci p = m_Contents.find(key);

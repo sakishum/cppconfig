@@ -96,7 +96,7 @@ std::string& CConfig::replace_all_distinct(std::string& str, const std::string& 
     return   str;   
 }   
  
-void CConfig::ignoreComment(std::string &str, const std::string &comm) {
+void CConfig::ignoreComment(std::string &str, const std::string &comm, bool isfilter) {
 	bool isFound = false;
     std::string::size_type position = 0;  
     while ((position = str.find_first_of(comm, position)) != std::string::npos) {
@@ -105,11 +105,11 @@ void CConfig::ignoreComment(std::string &str, const std::string &comm) {
             position++;
             isFound = true;
             continue;
-        }   
+        } 
         break;
     }   
     str = str.substr(0, position);
-    if (isFound) {
+    if (isfilter && isFound) {
     	replace_all_distinct(str, "\\", "");
 	}
 }
@@ -118,11 +118,9 @@ std::istream& operator>>(std::istream &is, CConfig& cf) {
 	// Load a Config from is
 	// Read in keys and values, kepping internal whitespace
 	typedef std::string::size_type pos;
-	//const std::string ignore = "\\";
 	const std::string &delim = cf.m_Delimiter;	// sparator
 	const std::string &comm = cf.m_Comment;		// comment
 	const pos skip = delim.length();			// length of sparator
-	printf("comm : %s\n", comm.c_str());
 	
 	bool terminate = false;
 	pos delimPos = 0;
@@ -143,7 +141,7 @@ std::istream& operator>>(std::istream &is, CConfig& cf) {
 		}
 
 		// Ignore comments ('#', ignore '\#')
-		CConfig::ignoreComment(line, comm);
+		CConfig::ignoreComment(line, comm, true);
 		//line = line.substr(0, line.find(comm));
 
 		// Parse the line if it contains a delimiter ('=')
@@ -160,7 +158,6 @@ std::istream& operator>>(std::istream &is, CConfig& cf) {
 			while (!terminate && is) {
 				std::getline(is, nextline);
 				terminate = true;
-
 				nlcopy = nextline;
 				CConfig::Trim(nlcopy);
 				if (nlcopy == "") {
@@ -168,7 +165,7 @@ std::istream& operator>>(std::istream &is, CConfig& cf) {
 				}
 
 				//nextline = nextline.substr(0, nextline.find(comm));
-				CConfig::ignoreComment(nextline, comm);
+				CConfig::ignoreComment(nextline, comm, false);
 				if (nextline.find(delim) != std::string::npos) {
 					continue;
 				}

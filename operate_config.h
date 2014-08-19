@@ -5,6 +5,7 @@
  * @version 0.0.1
  * @date 2014-05-06
  */
+
 #ifndef OPERATOR_CONFIG_H__
 #define OPERATOR_CONFIG_H__
 

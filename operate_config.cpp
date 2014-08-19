@@ -2,9 +2,11 @@
  * @file operate_config.cpp
  * @Synopsis  Generic configuration Class.
  * @author Saki Shum, sakishum1118@gmail.com
+ * DIR: /Users/sakishum1118/MyErlang/portPluginCpp/cppconfig/
  * @version 0.0.1
  * @date 2014-05-06
  */
+
 #include "operate_config.h"
 #include <fstream>
 #include <cstdlib>

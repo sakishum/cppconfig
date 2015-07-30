@@ -8,6 +8,7 @@
  */
 
 #include "operate_config.h"
+#include <iostream>
 #include <fstream>
 #include <cstdlib>
 #include <cstdio>
@@ -99,17 +100,23 @@ std::string& CConfig::replace_all_distinct(std::string& str, const std::string& 
 }   
  
 void CConfig::ignoreComment(std::string &str, const std::string &comm, bool isfilter) {
+	std::cout << "str: " << str << std::endl;
+	std::cout << "comm: " << comm << std::endl;
+	std::cout << "isfilter: " << isfilter << std::endl;
 	bool isFound = false;
     std::string::size_type position = 0;  
+	std::cout << "step 1" << std::endl;
     while ((position = str.find_first_of(comm, position)) != std::string::npos) {
     	//printf("****CConfig::%s, str[position - 1] = '%d' .\n", __func__, static_cast<int>(str[position - 1]));
-        if (str[position - 1] == '\\') {
+		//std::cout << "size: " << str.size() << ", position - 1: "<< position - 1 << std::endl; 
+        if (position > 0 && str[position - 1] == '\\') {
             position++;
             isFound = true;
             continue;
         } 
         break;
     }   
+	std::cout << "step 2" << std::endl;
     str = str.substr(0, position);
     if (isfilter && isFound) {
     	replace_all_distinct(str, "\\", "");

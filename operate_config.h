@@ -6,10 +6,8 @@
  * @date 2014-05-06
  */
 
-#ifndef OPERATOR_CONFIG_H__
-#define OPERATOR_CONFIG_H__
+#pragma once
 
-#include <iostream>
 #include <sstream>
 #include <string>
 #include <map>
@@ -152,7 +150,7 @@ T CConfig::read(const std::string &key, const T &value) const {
 	// if key is not found 
 	mapci p = m_Contents.find(key);
 	if (p == m_Contents.end()) {
-		printf("CConfig::%s, Not found, key is '%s'.\n", __func__, key.c_str());
+		//printf("CConfig::%s, Not found, key is '%s'.\n", __func__, key.c_str());
 		return value;
 	}
 	return string_as_T<T>( p->second);
@@ -172,7 +170,7 @@ void CConfig::getValue(const std::string &key, T &value) const {
 	// if key is not found 
 	mapci p = m_Contents.find(key);
 	if (p == m_Contents.end()) {
-		printf("CConfig::%s, Not found, key is '%s'.\n", __func__, key.c_str());
+		//printf("CConfig::%s, Not found, key is '%s'.\n", __func__, key.c_str());
 		return;
 	}
 	value = string_as_T<T>(p->second);
@@ -218,5 +216,4 @@ void CConfig::add(const std::string &in_key, const T &value) {
 }
 
 }  // namespace operatorconfig
-#endif  // OPERATOR_CONFIG_H__
 
